@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">  
+    <title>Countdown clock</title>
+  </head>
+  <body>
+    <header>
+      <div class = "container">
+        <h1> Coming soon </h1>
+      <div id = "countdown">
+        <div id="days">DAY</div>
+        <div id="hours">HOUR</div>
+        <div id="minutes">MIN</div>
+        <div id="seconds">SEC</div>  
+      </div>
+    </div>
+        
+      
+    <script type="text/javascript">
+    
+        //set the destination date
+        let dest = new Date('Feb 15, 2021 00:00:00').getTime();
+        
+        function countTime() {
+
+        //get current time
+        let current = new Date().getTime();
+        
+
+        //get the difference between destination and current time
+        let diff = dest - current;
+        
+        let sec = 1000;
+        let mins = sec * 60;
+        let hour = mins * 60;
+        let day = hour * 24;
+
+        //Algorithms to calculate days,hours,minutes and seconds
+        const d = Math.floor(diff / (day));
+        const h = Math.floor(
+          (diff % (day)) / (hour));
+        const m = Math.floor((diff % (hour)) / (mins));
+        const s = Math.floor((diff % (mins)) / sec);
+
+        document.getElementById('days').innerText = d;
+        document.getElementById('hours').innerText = h;
+        document.getElementById('minutes').innerText = m;
+        document.getElementById('seconds').innerText = s;
+
+        //if the time is 0 or below, stop counting
+        if (diff <= 0) {
+          clearInterval(countTime);
+          document.getElementById('countdown').innerHTML = '';
+         
+        }
+      
+        }
+
+        setInterval(function(){
+          countTime();
+        })
+      
+    </script>
+  </body>
+</html>
