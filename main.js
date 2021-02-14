@@ -1,5 +1,5 @@
 ﻿//set the destination date
-let dest = new Date('Feb 15, 2021 00:00:00').getTime();
+let dest = new Date('June 15, 2021 00:00:00').getTime();
 
 function countTime() {
   //get current time
